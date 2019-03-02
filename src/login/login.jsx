@@ -57,15 +57,6 @@ class Login extends Component {
                                     />
                                 </td>
                             </tr>
-                            <tr>
-                                <td colSpan="2" align="center">
-                                    <input
-                                        type="button"
-                                        onClick={this.check}
-                                        value={"Check"}
-                                    />
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </form>
@@ -74,6 +65,7 @@ class Login extends Component {
     }
 
     login = () => {
+        this.props.handleError(null);
         this.props.login(
             {
                 email: this.state.email,
@@ -81,14 +73,13 @@ class Login extends Component {
             },
             (response) => {
                 console.log(response);
+            },
+            (error) => {
+                if (error.response && error.response.data) {
+                    this.props.handleError(error.response.data);
+                }
             }
         );
-    }
-
-    check = () => {
-        this.props.serverStatus((response) => {
-            console.log(response);
-        });
     }
 }
 

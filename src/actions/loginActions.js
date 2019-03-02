@@ -12,12 +12,12 @@ export const serverStatus = (callback) => {
         });
 }
 
-export const login = (data, callback) => {
-    axios.get('/login', data)
+export const login = (data, callback, errorCallback) => {
+    axios.post('/login', data)
         .then(res => {
             callback(res);
         })
         .catch(error => {
-            console.log(error);
+            errorCallback(error);
         });
 }
