@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Login from './login/login';
-import { serverStatus, login } from './actions/loginActions';
+import { login } from './actions/loginActions';
 import './styles/App.css';
 import './styles/snackbar.css';
 

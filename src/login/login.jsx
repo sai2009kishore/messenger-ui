@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import './login.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import logo from './test.jpg';
+
+const inputStyle = {
+    padding: '5px',
+};
 
 class Login extends Component {
     constructor(props) {
@@ -13,53 +21,41 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
-                <form>
-                    <table>
-                        <thead></thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <label>Email</label>
-                                </td>
-                                <td>
-                                    <input
-                                        type="text"
-                                        autoComplete="email"
-                                        value={this.state.email}
-                                        onChange={(e) => {
-                                            this.setState({ email: e.target.value });
-                                        }}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Password</label>
-                                </td>
-                                <td>
-                                    <input
-                                        type="password"
-                                        autoComplete="current-password"
-                                        value={this.state.password}
-                                        onChange={(e) => {
-                                            this.setState({ password: e.target.value });
-                                        }}
-                                    />
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colSpan="2" align="center">
-                                    <input
-                                        type="button"
-                                        onClick={this.login}
-                                        value={"Login"}
-                                    />
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </form>
+            <div style={{ backgroundImage: `url(${logo})` }}>
+                <center>
+                    <div className="webflow-style-input">
+                        <input
+                            autoComplete="email"
+                            className=""
+                            onChange={(e) => {
+                                this.setState({ email: e.target.value });
+                            }}
+                            placeholder="Email"
+                            style={inputStyle}
+                            type="email"
+                            value={this.state.email}
+                        ></input>
+                    </div>
+                    <div className="webflow-style-input">
+                        <input
+                            autoComplete="current-password"
+                            className=""
+                            onChange={(e) => {
+                                this.setState({ password: e.target.value });
+                            }}
+                            placeholder="Password"
+                            style={inputStyle}
+                            type="password"
+                            value={this.state.password}
+                        ></input>
+                    </div>
+                    <button
+                        className="btn btn-white"
+                        onClick={this.login}
+                    >
+                        LOGIN <FontAwesomeIcon icon={faArrowRight} />
+                    </button>
+                </center>
             </div>
         );
     }
