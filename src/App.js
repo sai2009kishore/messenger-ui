@@ -3,6 +3,7 @@ import Login from './login/login';
 import { login } from './actions/loginActions';
 import './styles/App.css';
 import './styles/snackbar.css';
+import logo from './login/test.jpg';
 
 class App extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='App' style={{ backgroundImage: `url(${logo})` }}>
         <Login login={login} handleError={this.handleError} />
         <div
           id='snackbar'

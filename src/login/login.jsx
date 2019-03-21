@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
-import logo from './test.jpg';
 
 const inputStyle = {
     padding: '5px',
@@ -21,7 +20,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div style={{ backgroundImage: `url(${logo})` }}>
+            <div style={{ paddingTop: '10%' }}>
                 <center>
                     <div className="webflow-style-input">
                         <input
@@ -53,7 +52,7 @@ class Login extends Component {
                         className="btn btn-white"
                         onClick={this.login}
                     >
-                        LOGIN <FontAwesomeIcon icon={faArrowRight} />
+                        LOGIN <span class="fa fa-arrow-right"></span>
                     </button>
                 </center>
             </div>
