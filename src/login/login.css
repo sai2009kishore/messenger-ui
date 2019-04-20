@@ -2,16 +2,19 @@ html {
   box-sizing: border-box;
   font-size: 10px; }
 
-*, *:before, *:after {
+.Login {
+  width: 98%;
+  height: 100%; }
+
+*,
+*:before,
+*:after {
   box-sizing: inherit; }
 
 input {
   border-style: none;
   background: transparent;
   outline: none; }
-
-body {
-  background-color: #191919; }
 
 .demo-flex-spacer {
   flex-grow: 1; }
@@ -116,3 +119,13 @@ a#link {
   border: solid 2px #fff;
   background: #fff;
   color: #1f1f1f !important; }
+
+.btn-black {
+  border: solid 2px #000;
+  background: #000;
+  color: #fff !important; }
+
+.btn-black:hover {
+  border: solid 2px #fff;
+  background: transparent;
+  color: #000 !important; }

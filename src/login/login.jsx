@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './login.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import backgroundImage from './login-background.jpg';
 
 const inputStyle = {
     padding: '5px',
@@ -15,15 +14,14 @@ class Login extends Component {
             password: '',
         };
     }
-    componentDidMount() {
-    }
 
     render() {
         return (
-            <div style={{ paddingTop: '10%' }}>
+            <div className='Login' style={{ paddingTop: '10%', backgroundImage: `url(${backgroundImage})` }}>
                 <center>
                     <div className="webflow-style-input">
                         <input
+                            autoFocus={true}
                             autoComplete="email"
                             className=""
                             onChange={(e) => {
@@ -46,13 +44,14 @@ class Login extends Component {
                             style={inputStyle}
                             type="password"
                             value={this.state.password}
+                            onKeyDown={this._handleKeyDown}
                         ></input>
                     </div>
                     <button
                         className="btn btn-white"
                         onClick={this.login}
                     >
-                        LOGIN <span class="fa fa-arrow-right"></span>
+                        LOGIN <span className="fa fa-arrow-right"></span>
                     </button>
                 </center>
             </div>
@@ -60,21 +59,17 @@ class Login extends Component {
     }
 
     login = () => {
-        this.props.handleError(null);
-        this.props.login(
-            {
-                email: this.state.email,
-                password: this.state.password,
-            },
-            (response) => {
-                console.log(response);
-            },
-            (error) => {
-                if (error.response && error.response.data) {
-                    this.props.handleError(error.response.data);
-                }
-            }
-        );
+        let credentials = {
+            email: this.state.email,
+            password: this.state.password,
+        }
+        this.props.userLogin(credentials);
+    }
+
+    _handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            this.login();
+        }
     }
 }
 
