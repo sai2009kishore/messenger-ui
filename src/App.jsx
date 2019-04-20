@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Login from './login/login';
+import Login from './messenger/login/login';
 import Dashboard from './messenger/dashboard/dashboard';
 import { login } from './actions/loginActions';
 import { getJwtToken, setJwtToken, clearJwtToken, decodeJsx } from './utils/utilities';
