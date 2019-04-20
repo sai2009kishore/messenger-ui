@@ -1,6 +1,8 @@
-import { createStore } from "redux";
-import rootReducer from "../reducers/index";
+import createStore from './configureStore';
+import initialState from './initialState';
 
-const store = createStore(rootReducer);
+let state = initialState;
+
+const store = createStore(state);
 
 export default store;

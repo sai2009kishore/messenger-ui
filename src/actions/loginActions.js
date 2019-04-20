@@ -1,4 +1,5 @@
 import axios from './axios';
+import { USER_LOGIN } from '../constants/actionConstants';
 
 export const serverStatus = (callback) => {
     axios.get('')
@@ -12,12 +13,13 @@ export const serverStatus = (callback) => {
         });
 }
 
-export const login = (data, callback, errorCallback) => {
-    axios.post('/login', data)
-        .then(res => {
-            callback(res);
-        })
-        .catch(error => {
-            errorCallback(error);
-        });
+export function userLogin(data) {
+    return {
+        type: USER_LOGIN,
+        payload: axios.post('/login', data),
+    };
+}
+
+export function userLogout() {
+
 }

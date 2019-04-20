@@ -62,7 +62,7 @@ class Login extends Component {
             email: this.state.email,
             password: this.state.password,
         }
-        this.props.userLogin(credentials);
+        this.props.handleUserLogin(credentials);
     }
 
     _handleKeyDown = (e) => {
