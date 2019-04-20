@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './login.css';
 import backgroundImage from './login-background.jpg';
 
 const inputStyle = {
@@ -17,7 +16,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div className='Login' style={{ paddingTop: '10%', backgroundImage: `url(${backgroundImage})` }}>
+            <div className='full-size' style={{ paddingTop: '10%', backgroundImage: `url(${backgroundImage})` }}>
                 <center>
                     <div className="webflow-style-input">
                         <input

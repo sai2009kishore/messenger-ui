@@ -3,7 +3,7 @@ import Login from './login/login';
 import Dashboard from './messenger/dashboard/dashboard';
 import { login } from './actions/loginActions';
 import { getJwtToken, setJwtToken, clearJwtToken, decodeJsx } from './utils/utilities';
-import './styles/App.css';
+import './styles/styles.css';
 import './styles/snackbar.css';
 
 class App extends Component {
@@ -25,7 +25,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='full-size'>
         {this.state.jwtToken ?
           <Dashboard userLogout={this.userLogout} />
           : <Login userLogin={this.userLogin} />}

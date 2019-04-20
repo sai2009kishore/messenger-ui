@@ -3,9 +3,18 @@ html {
     font-size: 10px;
 }
 
-.Login {
-    width: 98%;
+.full-size {
     height: 100%;
+}
+
+.Error {
+    align-content: center;
+    background-color: red;
+    bottom: 0;
+    left: 50%;
+    margin: 0 20px 0 20px;
+    padding: 10px;
+    position: fixed;
 }
 
 *,
@@ -19,8 +28,6 @@ input {
     background: transparent;
     outline: none;
 }
-
-body {}
 
 .demo-flex-spacer {
     flex-grow: 1;
