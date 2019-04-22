@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from './messenger/login/login';
 import Dashboard from './messenger/dashboard/dashboard';
 import { userLogin } from './actions/loginActions';
-import { getJwtToken, setJwtToken, clearJwtToken, decodeJsx } from './utils/utilities';
+import { getJwtToken, setJwtToken, clearJwtToken } from './utils/utilities';
 import { connect } from "react-redux";
 import './styles/styles.css';
 import './styles/snackbar.css';
@@ -12,16 +12,26 @@ class App extends Component {
     super(props);
     this.state = {
       errorMessage: null,
+      isLoggedIn: false,
     };
   }
 
   componentDidMount() {
+    if (getJwtToken()) {
+      this.setLogin(true);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.jwtToken && nextProps.jwtToken) {
+      this.setLogin(true);
+    }
   }
 
   render() {
     return (
       <div className='full-size'>
-        {getJwtToken() ?
+        {this.state.isLoggedIn ?
           <Dashboard {...this.props} userLogout={this.userLogout} />
           : <Login handleUserLogin={this.handleUserLogin} />}
         <div
@@ -34,19 +44,6 @@ class App extends Component {
         </div>
       </div>
     );
-  }
-
-  handleToken = (token) => {
-    let decodedData = decodeJsx(token);
-    if (decodedData.data) {
-      // this.setState({
-      //   jwtToken: token,
-      //   userData: decodedData.data,
-      // });
-    } else {
-      this.handleError({ errorMessage: 'Error validating login credentials. Logging out.' });
-      this.userLogout();
-    }
   }
 
   handleError = (error) => {
@@ -65,9 +62,8 @@ class App extends Component {
       credentials,
       (response) => {
         if (response.token) {
-          let token = response.token;
-          this.handleToken(token);
-          setJwtToken(token);
+          setJwtToken(response.token);
+          this.setLogin(true);
         }
       },
       (error) => {
@@ -77,11 +73,12 @@ class App extends Component {
       });
   }
 
+  setLogin = (isLoggedIn) => {
+    this.setState({ isLoggedIn: isLoggedIn });
+  }
   userLogout = () => {
-    this.setState({
-      jwtToken: null,
-    });
     clearJwtToken();
+    this.setLogin(false);
   }
 }
 
