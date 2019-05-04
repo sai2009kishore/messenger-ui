@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import backgroundImage from './login-background.jpg';
+import { Button } from 'reactstrap';
 
 const inputStyle = {
     padding: '5px',
@@ -46,12 +47,13 @@ class Login extends Component {
                             onKeyDown={this._handleKeyDown}
                         ></input>
                     </div>
-                    <button
+                    <Button
                         className="btn btn-white"
                         onClick={this.login}
+                        size="lg"
                     >
                         LOGIN <span className="fa fa-arrow-right"></span>
-                    </button>
+                    </Button>
                 </center>
             </div>
         );
