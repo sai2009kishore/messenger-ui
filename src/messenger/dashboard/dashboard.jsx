@@ -10,19 +10,23 @@ import {
     DropdownToggle,
     DropdownMenu,
 } from 'reactstrap';
+import axios from '../../actions/axios';
 
 class Dashboard extends Component {
 
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
         this.state = {
             isOpen: false
         };
     }
 
-    toggle() {
+    componentDidMount() {
+        axios.get();
+    }
+
+    toggle = () => {
         this.setState({
             isOpen: !this.state.isOpen
         });

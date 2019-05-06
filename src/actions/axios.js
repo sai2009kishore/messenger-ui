@@ -7,6 +7,7 @@ let axiosNew = axios.create({
 
 axiosNew.interceptors.request.use(function (config) {
     let token = getJwtToken();
+    console.log(token);
     if (token) {
         config.headers.Authorization = token;
     }
